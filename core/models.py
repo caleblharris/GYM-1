@@ -3,54 +3,75 @@ from django.db import models
 
 # Create your models here.
 class Customer(models.Model):
-    first_name = models.TextField()
-    last_name = models.TextField()
-    gender_name = models.TextField
-    email_name = models.TextField()
-    phone_number = models.IntegerField()
-    address_number = models.IntegerField()
-    address_name = models.TextField()
-    instructor_name = models.TextField()
+    first_name = models.TextField(max_length=200, null=True)
+    last_name = models.TextField(max_length=200, null=True)
+    gender_name = models.TextField(max_length=200, null=True)
+    email_name = models.TextField(max_length=200, null=True)
+    phone_number = models.IntegerField(max_length=200, null=True)
+    address_number = models.IntegerField(max_length=200, null=True)
+    address_name = models.TextField(max_length=200, null=True)
+    instructor_name = models.TextField(max_length=200, null=True)
+
+def __str__(self):
+		return self.name
 
 class Profile(models.Model):
-    first_name = models.TextField()
-    last_name = models.TextField()
-    gender_name = models.TextField
-    email_name = models.TextField()
-    phone_number = models.IntegerField()
-    address_number = models.IntegerField()
-    address_name = models.TextField()
-    password_name = models.TextField()
+    first_name = models.TextField(max_length=200, null=True)
+    last_name = models.TextField(max_length=200, null=True)
+    gender_name = models.TextField(max_length=200, null=True)
+    email_name = models.TextField(max_length=200, null=True)
+    phone_number = models.IntegerField(max_length=200, null=True)
+    address_number = models.IntegerField(max_length=200, null=True)
+    address_name = models.TextField(max_length=200, null=True)
+    password_name = models.TextField(max_length=200, null=True)
+
+def __str__(self):
+		return self.name  
     
 
 class Memberships(models.Model):
-    memberships_name = models.IntegerField()
-    memberships_payment = models.IntegerField()
-    memberships_duration = models.IntegerField()
-    status_name = models.TextField()
+    memberships_name = models.IntegerField(max_length=200, null=True)
+    memberships_payment = models.IntegerField(max_length=200, null=True)
+    memberships_duration = models.IntegerField(max_length=200, null=True)
+    status_name = models.TextField(max_length=200, null=True)
+
+def __str__(self):
+		return self.name  
 
     
 class Journal(models.Model):
-    memberships_id = models.TextField()
-    workout_id = models.TextField()
-    check_in_date = models.IntegerField()
-    check_in_time = models.IntegerField()
-    check_out_time = models.IntegerField()
-    instructor_name = models.TextField()
+    memberships_id = models.TextField(max_length=200, null=True)
+    workout_id = models.TextField(max_length=200, null=True)
+    check_in_date = models.IntegerField(max_length=200, null=True)
+    check_in_time = models.IntegerField(max_length=200, null=True)
+    check_out_time = models.IntegerField(max_length=200, null=True)
+    instructor_name = models.TextField(max_length=200, null=True)
+
+def __str__(self):
+		return self.name  
         
 class Workout(models.Model):
-    workout_name = models.TextField()
-    workout_description = models.TextField()
+    workout_name = models.TextField(max_length=200, null=True)
+    workout_description = models.TextField(max_length=200, null=True)
+
+def __str__(self):
+		return self.name   
     
 
 class Instructor(models.Model):
-    first_name = models.TextField()
-    last_name = models.TextField()
-    gender_name = models.TextField
-    email_name = models.TextField()
-    phone_number = models.IntegerField()
+    first_name = models.TextField(max_length=200, null=True)
+    last_name = models.TextField(max_length=200, null=True)
+    gender_name = models.TextField(max_length=200, null=True)
+    email_name = models.TextField(max_length=200, null=True)
+    phone_number = models.IntegerField(max_length=200, null=True)
+
+def __str__(self):
+		return self.name
            
 class Payment(models.Model):
-    person_name = models.TextField()
-    payment_date = models.IntegerField()
-    payment_amount = models.IntegerField()
+    person_name = models.TextField(max_length=200, null=True)
+    payment_date = models.IntegerField(max_length=200, null=True)
+    payment_amount = models.FloatField(null=True)
+
+def __str__(self):
+		return self.name
