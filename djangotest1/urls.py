@@ -15,16 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 
-from django.urls import path
+from django.urls import path, include
 
-from django.urls import include
+from core import views
 
 
 
 urlpatterns = [
-    
+    path('',views.home,name = 'home'), 
     path('jet/', include('jet.urls', 'jet')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls), # admin site
     
 ]
+views
