@@ -74,8 +74,6 @@ TEMPLATES = [
 ]
 
 
-
-
 WSGI_APPLICATION = 'djangotest1.wsgi.application'
 
 
