@@ -1,3 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% include "_modal.html" %}
+
+{% load static %}
+
+
 {% load widget_tweaks %}
 
 <form method="post" action="">
@@ -35,5 +44,5 @@
   <div class="modal-footer">
     <button type="submit" class="btn btn-primary" formnovalidate="formnovalidate">Log in</button>
   </div>
-
+  {% endblock content %}
 </form>
