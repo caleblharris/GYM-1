@@ -1,0 +1,46 @@
+{% load widget_tweaks %}
+
+<div class="modal-header">
+  <h3 class="modal-title">Customer details</h3>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+
+  <div class="">
+    first_name:
+    {{ customer.first_name }}
+  </div>
+  <div class="">
+    last_name:
+    {{ customer.last_name }}
+  </div>
+  <div class="">
+    gender:
+    {{ customer.gender }}
+    €
+  </div>
+  <div class="">
+    email:
+    {{ customer.email }}
+  </div>
+  <div class="">
+    phone_number:
+    {{ customer.phone_number }}
+  </div>
+  <div class="">
+    address_name:
+    {{ customer.address_name }}
+  </div>
+  <div class="">
+    instructor_name:
+    {{ customer.instructor_name }}
+  </div>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>

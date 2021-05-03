@@ -14,18 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-
 from django.urls import path, include
-
 from core import views
 
 
 
+
 urlpatterns = [
-    path('',views.home,name = 'home'), 
+    path('', views.Index.as_view(), name='index'),
+    
+    path('create/', views.CustomerCreateView.as_view(), name='create_customer'),
+    path('update/<int:pk>', views.CustomerUpdateView.as_view(), name='update_customer'),
+    path('read/<int:pk>', views.CustomerReadView.as_view(), name='read_customer'),
+    path('delete/<int:pk>', views.CustomerDeleteView.as_view(), name='delete_customer'),
+    #path('customer/', views.customer, name='customer'),
+    path('signup/', views.SignUpView.as_view(), name='signup'),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
+    path('logout/', views.CustomLoginView.as_view(), name='logout'),
     path('jet/', include('jet.urls', 'jet')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
-    path('admin/', admin.site.urls), # admin site
-    
+    path('admin/', admin.site.urls),
 ]
-views

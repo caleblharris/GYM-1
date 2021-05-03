@@ -1,0 +1,45 @@
+<table id="customer-table" class="table">
+    <thead>
+    <tr>
+      <th class="text-center" scope="col">#</th>
+      <th class="text-center" scope="col">First Name</th>
+      <th class="text-center" scope="col">Last Name</th>
+      <th class="text-center" scope="col">Gender</th>
+      <th class="text-center" scope="col">E-mail</th>
+      <th class="text-center" scope="col">Phone Number</th>
+      <th class="text-center" scope="col">Address Name</th>
+      <th class="text-center" scope="col">Instructor Name</th>
+      <th class="text-center" scope="col">Read / Update / Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for customer in customer %}
+      <tr>
+        <th class="text-center" scope="row">{{ forloop.counter }}</th>
+        <td class="text-center">{{ customer.first_name }}</td>
+        <td class="text-center">{{ customer.last_name }}</td>
+        <td class="text-center">{{ customer.gender }}</td>
+        <td class="text-center">{{ customer.email }}</td>
+        <td class="text-center">{{ customer.phone_number }}</td>
+        <td class="text-center">{{ customer.address_name }}</td>
+        <td class="text-center">{{ customer.instructor_name }}</td>
+        <td class="text-center">
+         
+            <!-- Read customer buttons -->
+          <button type="button" class="read-customer btn btn-sm btn-primary" data-form-url="{% url 'read_customer' customer.pk %}">
+            <span class="fa fa-eye"></span>
+          </button>
+          <!-- Update customer buttons -->
+          <button type="button" class="update-customer btn btn-sm btn-primary" data-form-url="{% url 'update_customer' customer.pk %}">
+            <span class="fa fa-pencil"></span>
+          </button>
+          <!-- Delete customer buttons -->
+          <button type="button" class="delete-customer btn btn-sm btn-danger" data-form-url="{% url 'delete_customer' customer.pk %}">
+            <span class="fa fa-trash"></span>
+          </button>
+        </td>
+      </tr>
+    {% endfor %}
+  
+    </tbody>
+  </table>

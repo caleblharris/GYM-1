@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% include "_modal.html" %}
+
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <p class="text-primary">DJANGO GYM MANAGEMENT SYSTEM</p>
+        <h4>
+          <strong>1. Signup form</strong>
+        </h4>
+        <p>Sign up via Bootstrap modal.</p>
+        <div class="row">
+          <div class="col-12 mb-3">
+            <button id="signup-btn" class="btn btn-primary" type="button" name="button">Sign up</button>
+          </div>
+        </div>
+        <h4>
+          <strong>2. Login form</strong>
+        </h4>
+        <p>Log in via Bootstrap modal. Sign up first.</p>
+        <div class="row">
+          <div class="col-12 mb-3">
+            {% if not user.is_anonymous %}
+              <span>
+                Your are logged in as
+                <strong>{{ user }}</strong>.
+              </span>
+              <a href="{% url 'logout' %}" id="logout-btn" class="btn btn-danger" role="button">Log out</a>
+            {% else %}
+              <button id="login-btn" class="btn btn-primary" type="button" name="button">Log in</button>
+            {% endif %}
+          </div>
+
+        </div>
+        <h4>
+          <strong>3. CRUD actions</strong>
+        </h4>
+        <p>Create, Read, Update and Delete Customer in Bootstrap modal.</p>
+
+        <div class="row">
+          <div class="col-12 mb-3">
+            <button id="create-customer-sync" class="btn btn-primary" type="button" name="button">
+              <span class="fa fa-plus mr-2"></span>Create customer - Synchronous
+            </button>
+            <button id="create-customer-async" class="btn btn-primary" type="button" name="button">
+              <span class="fa fa-plus mr-2"></span>Create customer - Asynchronous
+            </button>
+            
+          </div>
+          <div class="col-12 mb-3">
+          {% if 'type' in request.GET %}
+            <p class="filtered-customer">Filtered customer.</p>
+          {% endif %}
+          {% include "_customer_table.html" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extrascripts %}
+  <script type="text/javascript">
+      $(function () {
+          // Login
+          $("#login-btn").modalForm({
+            formURL: "{% url 'login' %}"
+          });
+
+          //  Signup
+          $("#signup-btn").modalForm({
+            formURL: "{% url 'signup' %}"
+          });
+
+          // Create customer synchronous
+          function createCustomerSyncModalForm() {
+            $("#create-customer-sync").modalForm({
+                formURL: "{% url 'create_customer' %}",
+                modalID: "#create-modal"
+            });
+          }
+          createCustomerSyncModalForm();
+
+          // Create customer asynchronous button
+          // message
+          var asyncSuccessMessageCreate = [
+            "<div ",
+            "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
+            "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
+            "Success: Book was created.",
+            "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>",
+            "<span aria-hidden='true'>&times;</span>",
+            "</button>",
+            "</div>",
+            "<script>",
+            "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
+            "<\/script>"
+          ].join("");
+
+          // modal form
+          function createCustomerAsyncModalForm() {
+            $("#create-customer-async").modalForm({
+                formURL: "{% url 'create_customer' %}",
+                modalID: "#create-modal",
+                asyncUpdate: true,
+                asyncSettings: {
+                  closeOnSubmit: true,
+                  successMessage: asyncSuccessMessageCreate,
+                  dataUrl: "customer/",
+                  dataElementId: "#customer-table",
+                  dataKey: "table",
+                  addModalFormFunction: reinstantiateModalForms
+                }
+            });
+          }
+          createCustomerAsyncModalForm();
+
+          // Update customer asynchronous button
+          // message
+          var asyncSuccessMessageUpdate = [
+            "<div ",
+            "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
+            "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
+            "Success: Customer was updated.",
+            "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>",
+            "<span aria-hidden='true'>&times;</span>",
+            "</button>",
+            "</div>",
+            "<script>",
+            "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
+            "<\/script>"
+          ].join("");
+
+          // modal form
+          function updateCustomerModalForm() {
+            $(".update-customer").each(function () {
+              $(this).modalForm({
+                formURL: $(this).data("form-url"),
+                asyncUpdate: true,
+                asyncSettings: {
+                  closeOnSubmit: false,
+                  successMessage: asyncSuccessMessageUpdate,
+                  dataUrl: "customer/",
+                  dataElementId: "#customer-table",
+                  dataKey: "table",
+                  addModalFormFunction: reinstantiateModalForms
+                }
+              });
+            });
+          }
+          updateCustomerModalForm();
+
+          // Delete customer buttons - formURL is retrieved from the data of the element
+          function deleteCustomerModalForm() {
+            $(".customer-table").each(function () {
+                $(this).modalForm({formURL: $(this).data("form-url"), isDeleteForm: true});
+            });
+          }
+          deleteCustomerModalForm();
+
+          // Read customer buttons
+          function readCustomerModalForm() {
+            $(".read-customer").each(function () {
+                $(this).modalForm({formURL: $(this).data("form-url")});
+            });
+          }
+          readCustomerModalForm();
+
+          function reinstantiateModalForms() {
+            createCustomerAsyncModalForm();
+            readCustomerModalForm();
+            updateCustomerModalForm();
+            deleteCustomerModalForm();
+          }
+
+          
+
+          // Hide message
+          $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+              $(".alert").slideUp(500);
+          });
+      });
+  </script>
+{% endblock extrascripts %}
