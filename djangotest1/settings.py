@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_filters',
     'bootstrap_modal_forms',
     'widget_tweaks',
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [
