@@ -21,8 +21,9 @@ from core import views
 
 
 urlpatterns = [
-    path('', views.Index.as_view(), name='index'),
     
+    path('', views.Hero.as_view(), name='home'),
+    path('index/', views.Index.as_view(), name='index'),
     path('create/', views.CustomerCreateView.as_view(), name='create_customer'),
     path('update/<int:pk>', views.CustomerUpdateView.as_view(), name='update_customer'),
     path('read/<int:pk>', views.CustomerReadView.as_view(), name='read_customer'),

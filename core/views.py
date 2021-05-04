@@ -23,13 +23,20 @@ from .forms import (
 )
 
 
-
+class Hero(generic.ListView):
+    model = Customer
+    context_object_name = 'customer'
+    template_name = 'hero.html'
+    authentication_form = CustomAuthenticationForm
+    success_message = 'Success: You were successfully logged in.'
+    success_url = reverse_lazy('index')
 
 
 class Index(generic.ListView):
     model = Customer
     context_object_name = 'customer'
     template_name = 'index.html'
+    
 
     
 

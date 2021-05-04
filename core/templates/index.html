@@ -5,7 +5,7 @@
   {% include "_modal.html" %}
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="images/logo.png">
+    <img src="static/images/logo.png">
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
@@ -17,6 +17,15 @@
          <li class="nav-item">
            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
          </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">Memberships</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">Classes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">Contact</a>
+        </li>
        </ul>
      </div>
    
@@ -28,36 +37,11 @@
   <div class="container mt-3">
     <div class="row">
       <div class="col">
-        <p class="text-primary">DJANGO GYM MANAGEMENT SYSTEM</p>
+        <p class="text-primary">NO STRANGERS TO HARD WORK. REAL RECOGNIZES RESULTS!!!</p>
         <h4>
-          <strong>1. Signup form</strong>
-        </h4>
-        <p>Sign up</p>
-        <div class="row">
-          <div class="col-12 mb-3">
-            <button id="signup-btn" class="btn btn-primary" type="button" name="button">Sign up</button>
-          </div>
-        </div>
+        
         <h4>
-          <strong>2. Login form</strong>
-        </h4>
-        <p>Log In</p>
-        <div class="row">
-          <div class="col-12 mb-3">
-            {% if not user.is_anonymous %}
-              <span>
-                Your are logged in as
-                <strong>{{ user }}</strong>.
-              </span>
-              <a href="{% url 'logout' %}" id="logout-btn" class="btn btn-danger" role="button">Log out</a>
-            {% else %}
-              <button id="login-btn" class="btn btn-primary" type="button" name="button">Log in</button>
-            {% endif %}
-          </div>
-
-        </div>
-        <h4>
-          <strong>3. CRUD actions</strong>
+          <strong> CRUD ACTION</strong>
         </h4>
         <p>Create, Read, Update and Delete Customer in Bootstrap modal.</p>
 
