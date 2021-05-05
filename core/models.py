@@ -21,8 +21,9 @@ class Customer(models.Model):
     address_name = models.CharField(max_length=200, null=True, blank=True)
     instructor_name = models.ForeignKey(Instructor, on_delete=models.PROTECT, null=True, blank=True)
 
+
 def __str__(self):
-	    return self.name
+    return self.first_name 
 
 class Memberships(models.Model):
     memberships_name = models.CharField(max_length=200, null=True, blank=True)
