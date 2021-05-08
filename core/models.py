@@ -9,8 +9,8 @@ class Instructor(models.Model):
     email = models.CharField(max_length=200, null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
 
-def __str__(self):
-        return self.name
+    def __str__(self):
+        return self.first_name     
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=200, null=True, blank=True)
@@ -22,8 +22,8 @@ class Customer(models.Model):
     instructor_name = models.ForeignKey(Instructor, on_delete=models.PROTECT, null=True, blank=True)
 
 
-def __str__(self):
-    return self.first_name 
+    def __str__(self):
+        return self.first_name 
 
 class Memberships(models.Model):
     memberships_name = models.CharField(max_length=200, null=True, blank=True)
@@ -31,14 +31,14 @@ class Memberships(models.Model):
     memberships_duration = models.IntegerField(null=True, blank=True)
     status_name = models.CharField(max_length=200, null=True, blank=True)
 
-def __str__(self):
+    def __str__(self):
 	    return self.name  
 
 class Workout(models.Model):
     workout_name = models.TextField(max_length=200, null=True, blank=True)
     workout_description = models.TextField(max_length=200, null=True, blank=True)
 
-def __str__(self):
+    def __str__(self):
 	    return self.name   
 
 class Journal(models.Model):
@@ -48,7 +48,7 @@ class Journal(models.Model):
     check_out_datetime = models.DateTimeField(null=True, blank=True)
     instructor = models.ForeignKey(Instructor, on_delete=models.PROTECT, null=True, blank=True)
 
-def __str__(self):
+    def __str__(self):
 	    return self.name  
            
 class Payment(models.Model):
@@ -56,5 +56,5 @@ class Payment(models.Model):
     payment_date = models.DateField(null=True, blank=True)
     payment_amount = models.FloatField(null=True)
 
-def __str__(self):
+    def __str__(self):
 	    return self.name
