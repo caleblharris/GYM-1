@@ -13,6 +13,7 @@ from bootstrap_modal_forms.generic import (
     BSModalUpdateView,
     BSModalReadView,
     BSModalDeleteView
+    
 )
 
 from .forms import (
@@ -31,14 +32,39 @@ class Hero(generic.ListView):
     success_message = 'Success: You were successfully logged in.'
     success_url = reverse_lazy('index')
 
+ 
+
 
 class Index(generic.ListView):
     model = Customer
     context_object_name = 'customer'
     template_name = 'index.html'
     
+   
+class AboutView(BSModalCreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'about.html'
+    success_message = 'Success: Sign up succeeded. You can now Log in.'
+    success_url = reverse_lazy('index')
 
-    
+class MembershipsView(BSModalCreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'memberships.html'
+    success_message = 'Success: Sign up succeeded. You can now Log in.'
+    success_url = reverse_lazy('index')
+
+class ClassesView(BSModalCreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'classes.html'
+    success_message = 'Success: Sign up succeeded. You can now Log in.'
+    success_url = reverse_lazy('index') 
+
+
+class ContactView(BSModalCreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'contact.html'
+    success_message = 'Success: Sign up succeeded. You can now Log in.'
+    success_url = reverse_lazy('index')   
 
 
 
