@@ -12,7 +12,7 @@ from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
 class CustomerModelForm(BSModalModelForm):
     class Meta:
         model = Customer
-        fields = ['first_name', 'last_name', 'gender', 'email','phone_number','address_name','instructor_name']
+        fields = ['first_name', 'last_name', 'gender', 'email','phone_number','address_name','memberships_name','instructor_name']
 
 class CustomUserCreationForm(PopRequestMixin, CreateUpdateAjaxMixin, UserCreationForm):
     class Meta:

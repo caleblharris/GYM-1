@@ -19,6 +19,7 @@ class Customer(models.Model):
     email = models.CharField(max_length=200, null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
     address_name = models.CharField(max_length=200, null=True, blank=True)
+    memberships_name = models.CharField(max_length=200, null=True, blank=True)
     instructor_name = models.ForeignKey(Instructor, on_delete=models.PROTECT, null=True, blank=True)
 
 
@@ -32,7 +33,7 @@ class Memberships(models.Model):
     status_name = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-	    return self.name  
+	    return self.memberships_name  
 
 class Workout(models.Model):
     workout_name = models.TextField(max_length=200, null=True, blank=True)

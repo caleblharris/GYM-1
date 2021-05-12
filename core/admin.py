@@ -7,7 +7,7 @@ from core.models import *
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
     search_fields = [ 'first_name', 'last_name']
-    list_display = ('first_name', 'last_name', 'gender', 'email','phone_number','address_name','instructor_name')
+    list_display = ('first_name', 'last_name', 'gender', 'email','phone_number','address_name','memberships_name','instructor_name')
 
 @admin.register(Memberships)
 class MembershipsAdmin(admin.ModelAdmin):
